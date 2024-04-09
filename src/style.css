@@ -1,10 +1,63 @@
 /* ########################################
 ############# CUSTOM FONTS ################
 ######################################## */
-
+/* Provide variable fonts as main format. */
+@font-face {
+  font-family: 'Kumbh Sans VF';
+  src:
+    local('Kumbh Sans'),
+    url('/assets/fonts/kumbh-sans/KumbhSans-VariableFont_YOPQ_wght.woff2')
+      format('woff2-variations'),
+    url('/assets/fonts/kumbh-sans/KumbhSans-VariableFont_YOPQ_wght.woff')
+      format('woff-variations'),
+    url('/assets/fonts/kumbh-sans/KumbhSans-VariableFont_YOPQ_wght.ttf')
+      format('truetype-variations');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+/* Provide static fonts as a fallback. */
+@font-face {
+  font-family: 'Kumbh Sans';
+  src:
+    local('Kumbh Sans'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Regular.woff2')
+      format('woff2'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Regular.woff') format('woff'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Regular.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kumbh Sans';
+  src:
+    local('Kumbh Sans'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Bold.woff2') format('woff2'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Bold.woff') format('woff'),
+    url('/assets/fonts/kumbh-sans/static/KumbhSans-Bold.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 /* ########################################
 ############# STYLE GUIDE #################
 ######################################## */
+:root {
+  --color-primary: #19a2ae;
+  --color-neutral-200: hsl(0, 0%, 59%);
+  --color-neutral-400: hsl(227, 10%, 46%);
+  --color-neutral-800: hsl(229, 23%, 23%);
+
+  --font-body-sm: 0.875rem;
+  --font-body: 1rem;
+  --font-heading: 1.125rem;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --spacing: 2rem;
+}
 
 /* ########################################
 ############# RESET #######################
