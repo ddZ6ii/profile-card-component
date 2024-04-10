@@ -21,13 +21,28 @@
     <main>
       <div class="card">
         <header class="card-header">
-          <img
-            src="/assets/images/image-victor.jpg"
-            alt=""
-            width="96"
-            height="96"
-            class="card-avatar"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="
+                /assets/images/image-victor-80.webp  1x,
+                /assets/images/image-victor-160.webp 2x,
+                /assets/images/image-victor-240.webp 3x
+              "
+            />
+            <img
+              srcset="
+                /assets/images/image-victor-80.jpg  1x,
+                /assets/images/image-victor-160.jpg 2x,
+                /assets/images/image-victor-240.jpg 3x
+              "
+              src="/assets/images/image-victor-160.jpg"
+              alt=""
+              width="160"
+              height="160"
+              class="card-avatar"
+            />
+          </picture>
         </header>
         <div class="card-content">
           <h1 class="card-heading">
