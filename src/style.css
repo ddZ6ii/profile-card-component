@@ -45,18 +45,24 @@
 ######################################## */
 :root {
   --color-primary: #19a2ae;
+  --color-complementary: #923a00;
+  --color-neutral-50: hsl(0, 0%, 100%);
+  --color-neutral-100: hsl(0, 0%, 90%);
   --color-neutral-200: hsl(0, 0%, 59%);
   --color-neutral-400: hsl(227, 10%, 46%);
+  --color-neutral-600: hsl(227, 7%, 37%);
   --color-neutral-800: hsl(229, 23%, 23%);
 
-  --font-body-sm: 0.875rem;
-  --font-body: 1rem;
-  --font-heading: 1.125rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-heading: 1.25rem;
 
   --font-weight-regular: 400;
   --font-weight-bold: 700;
 
   --spacing: 2rem;
+
+  --transition-duration-timing: 150ms ease;
 }
 
 /* ########################################
@@ -102,6 +108,21 @@ ul {
 /* ########################################
 ############# BASIC STYLING ###############
 ######################################## */
+body {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-body);
+  font-family: 'Kumbh Sans', sans-serif;
+  @supports (font-variation-settings: normal) {
+    font-family: 'Kumbh Sans VF', sans-serif;
+  }
+}
+
+h1,
+h2 {
+  color: var(--color-neutral-800);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+}
 
 /* ########################################
 ############# UTILITIES ###################
@@ -124,3 +145,109 @@ ul {
 /* ########################################
 ########### COMPONENT STYLING #############
 ######################################## */
+.wrapper {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  background:
+    url('/assets/images/bg-pattern-top.svg') right 50vw bottom 50dvh no-repeat,
+    url('/assets/images/bg-pattern-bottom.svg') left 50vw top 50dvh no-repeat,
+    var(--color-primary);
+}
+
+.card {
+  --_header-height: 150px;
+  --_image-height: 40%;
+  --_image-offsetY: calc(var(--_header-height) - 50%);
+
+  margin-inline: auto;
+  width: min(90%, 400px);
+  display: grid;
+  grid-template-rows: var(--_header-height) repeat(2, auto);
+  gap: var(--spacing);
+  background-color: var(--color-neutral-50);
+  border-radius: 12px;
+  overflow: hidden;
+
+  & .card-header {
+    background-image: url('/assets/images/bg-pattern-card.svg');
+  }
+
+  & .card-avatar {
+    margin-inline: auto;
+    width: var(--_image-height);
+    height: auto;
+    border: 8px solid var(--color-neutral-50);
+    border-radius: 9999px;
+    translate: 0 var(--_image-offsetY);
+  }
+
+  & .card-content {
+    margin-top: calc(0.5 * var(--_image-height));
+    text-align: center;
+  }
+
+  & .card-heading {
+    margin-bottom: calc(0.25 * var(--spacing));
+  }
+
+  & .card-age {
+    padding-left: calc(0.15 * var(--spacing));
+    color: var(--color-neutral-400);
+    font-weight: var(--font-weight-regular);
+  }
+
+  & .card-stats {
+    padding: var(--spacing);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(0.5 * var(--spacing));
+    border-top: 1px solid var(--color-neutral-100);
+  }
+
+  & .card-stat {
+    flex: 1;
+    text-align: center;
+    & .small {
+      margin-top: calc(0.1 * var(--spacing));
+      font-size: var(--font-size-body-sm);
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.footer {
+  padding: calc(0.5 * var(--spacing));
+  color: var(--color-neutral-800);
+  text-align: center;
+
+  & .footer-icon {
+    color: var(--color-neutral-50);
+  }
+
+  & .footer-link {
+    transition: var(--transition-duration-timing);
+
+    &,
+    &:link {
+      color: var(--color-neutral-800);
+      text-underline-offset: 4px;
+    }
+    &:visited {
+      color: var(--color-neutral-600);
+    }
+    &:is(:hover, :focus-visible) {
+      color: var(--color-neutral-50);
+    }
+    &:focus-visible {
+      outline-color: var(--color-neutral-50);
+      text-decoration: none;
+    }
+    &:active {
+      color: var(--color-complementary);
+    }
+  }
+}
